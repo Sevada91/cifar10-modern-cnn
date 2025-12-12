@@ -11,6 +11,7 @@ def create_dataloaders(
     num_workers: int = 4,
     val_ratio: float = 0.1,
     augment: bool = True,
+    return_datasets: bool = False
 ):
     """
     Create and return PyTorch DataLoaders for CIFAR-10.
@@ -90,5 +91,8 @@ def create_dataloaders(
         num_workers=num_workers,
         pin_memory=True,
     )
-
-    return train_loader, val_loader, test_loader
+    
+    if return_datasets:
+        return train_dataset, val_dataset, test_dataset
+    else:
+        return train_loader, val_loader, test_loader
