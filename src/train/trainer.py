@@ -60,12 +60,8 @@ def fit(
         )
         
         if scheduler is not None:
-            if hasattr(scheduler, 'step'):
-                try:  
-                    scheduler.step(val_loss)
-                except TypeError:
-                    scheduler.step()
-        
+            scheduler.step()
+
         train_loss_curve.append(train_loss)
         train_acc_curve.append(train_acc)
         val_loss_curve.append(val_loss)
